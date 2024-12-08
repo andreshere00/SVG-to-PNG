@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+cairocffi = "*"
+cairosvg = "*"
+pillow = "*"
+pycairo = "*"
+rlpycairo = "*"
+spire = "*"
+pdf2image = "*"
+pytest = "*"
+svg-to-png-app = {file = ".", editable = true}
+reportlab = "*"
+pyyaml = "*"
+svglib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"
