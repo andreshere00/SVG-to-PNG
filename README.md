@@ -1,5 +1,3 @@
-# SVG-to-PNG
-Application for converting SVG to PNG files using CLI or API.
 # SVG to PNG Conversion Application
 
 This application provides a basic framework for converting SVG files to PNG format using multiple conversion methods. It is designed with scalability, traceability, and flexibility in mind, allowing developers to use various methods for conversion while maintaining a clean and organized codebase.
