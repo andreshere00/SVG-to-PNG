@@ -34,4 +34,4 @@ RUN pip install --upgrade pip \
 COPY . /app
 
 # Define the entrypoint
-ENTRYPOINT ["python", "src/interfaces/cli/main.py"]
+CMD ["uvicorn", "src.interfaces.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

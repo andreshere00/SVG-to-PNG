@@ -25,11 +25,12 @@ Detailed documentation available in the /docs directory.
 ## Installation
 
 
-### Prerequisites
+### Pre-requisites
 
 - [Python](https://www.python.org/) 3.12 or higher.
 - [Pipenv](https://pipenv.pypa.io/en/latest/) (for dependency management).
-- [Inkscape](https://wiki.inkscape.org/wiki/Installing_Inkscape) (optional, for Inkscape-based conversion).
+- [Inkscape](https://wiki.inkscape.org/wiki/Installing_Inkscape) (Optional).
+- [Docker](https://docs.docker.com/engine/install/) (Optional).
 
 
 ### Steps
@@ -41,22 +42,27 @@ git clone <repository_url>
 cd <repository_name>
 ```
 
+Activate virtual environment:
+```bash
+pipenv shell
+```
+
 Install dependencies:
 
 ```bash
 pipenv install
 ```
 
-Install Inkscape (if required):
+Install Inkscape (if required, **only needed in non-dockerized** environments):
 
 ```bash
 brew install --cask inkscape  # macOS
 sudo apt install inkscape     # Ubuntu/Debian
 ```
 
-
 ## Usage
 
+The application can be used either in CLI or API.
 
 ### Command-Line Interface (CLI)
 
@@ -70,16 +76,26 @@ Following the assets provided in the repository:
 pipenv run python src/interfaces/cli/main.py --input static/input/input.svg --output static/output/output.svg
 ```
 
-
 ### Application Program Interface (API)
 
-Coming soon!!
+#### Without docker
 
+```bash
+uvicorn src.interfaces.api.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+#### With docker
+
+```bash
+sudo docker build -t svg-to-png .
+sudo docker run --env-file .env
+```
+
+Default methods can be found on `http://localhost:8000/docs`. Note that port 8000 should be opened in order to access to the API through the browser.
 
 ## Configuration
 
 Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application settings. In docs explain all the available settings. But the script can be executed with the default configuration.
-
 
 ## Project Structure
 
@@ -87,29 +103,65 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 .
 ├── src/
 │   ├── config/
-│   │   ├── config.yaml      # Configuration file
-│   │   ├── logs/            # Logger configuration
+│   │   ├── config.yaml        # Configuration file
+│   │   ├── logs/              # Logger configuration
+│   │   │   └── logger.py      # Logger setup
 │   │   └── __init__.py
 │   ├── interfaces/
-│   │   └── cli/             # Command-line interface
-│   │       └── main.py
+│   │   ├── cli/               # Command-line interface
+│   │   │   ├── __init__.py
+│   │   │   └── main.py        # CLI entrypoint
+│   │   ├── api/ 
+│   │   │   ├── routes/            # API endpoints
+│   │   │   │   ├──__init__.py
+│   │   │   │   ├── upload.py      # Upload API
+│   │   │   │   ├── convert.py     # Convert API
+│   │   │   │   └── download.py    # Download API   
+│   │   │   ├── __init__.py
+│   │   │   └── main.py            # API entrypoint
+│   │   └── __init__.py
 │   ├── services/
-│   │   ├── processor/       # Main processing logic
+│   │   ├── processor/         # Main processing logic
+│   │   │   ├── __init__.py
 │   │   │   └── svg_processor.py
-│   │   ├── converter/       # Conversion logic
+│   │   ├── converter/         # Conversion logic
+│   │   │   ├── __init__.py
 │   │   │   ├── factory.py
 │   │   │   ├── svg2pdf2png.py
 │   │   │   ├── svg2png_cairo.py
-│   │   │   └── svg2png_inkscape.py
+│   │   │   ├── svg2png_inkscape.py
+│   │   │   └── svg2png_reportlab.py
 │   ├── utils/
-│   │   ├── tracer.py        # Tracing utilities
-│   │   ├── validator.py     # Input validation
-│   │   └── config_loader.py # Config loader
-├── tests/                   # Unit tests
+│   │   ├── __init__.py
+│   │   ├── tracer.py          # Tracing utilities
+│   │   ├── validator.py       # Input validation
+│   │   └── config_loader.py   # Config loader
+├── tests/                     # Unit tests
 │   ├── methods/
-│   └── services/
-├── docs/                    # Documentation
-└── Pipfile                  # Dependency management
+│   │   ├── test_svg2pdf2png.py
+│   │   ├── test_svg2png_cairo.py
+│   │   ├── test_svg2png_inkscape.py
+│   │   └── test_svg2png_reportlab.py
+│   ├── services/
+│   │   ├── test_factory.py
+│   │   └── test_svg_processor.py
+│   └── api/
+│       ├── test_upload.py
+│       ├── test_convert.py
+│       └── test_download.py
+├── docs/                      # Documentation
+│   ├── usage.md               # User guide for CLI and API
+│   ├── architecture.md        # Architectural design
+│   └── config.md              # Configuration details
+├── static/                    # Static files
+│   ├── input/                 # Sample input files
+│   └── output/                # Generated output files
+├── Pipfile                    # Dependency management
+├── Pipfile.lock               # Locked dependencies
+├── Dockerfile                 # Docker setup
+├── docker-compose.yaml        # Docker Compose setup
+├── .env                       # Environment variables
+└── README.md                  # Project overview
 ```
 
 
@@ -130,9 +182,6 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 
 ## Next steps
 
-1. Dockerize the application (based on Linux).
-2. Add `.gitignore`, `hooks` and `pre-commit` configurations.
-3. Aggregate support to process multiple files by console.
-4. Add an API interface.
-4. Incorporate an e2e (end-to-end) feature to use several conversion methods at once.
-5. Add mechanisms to CI/CD (Continuous Integration & Continuous Deployment), if needed.
+1. Aggregate support to process multiple files by console.
+2. Incorporate an e2e (end-to-end) feature to use several conversion methods at once.
+3. Add mechanisms to CI/CD (Continuous Integration & Continuous Deployment), if needed.
