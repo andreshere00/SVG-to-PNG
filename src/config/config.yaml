@@ -1,9 +1,13 @@
-# svg_conversion_method: "cairo"
-svg_conversion_method: "inkscape"
-# svg_conversion_method: "reportlab" 
-# svg_conversion_method: "pdf"
+svg_conversion:
+  default: pdf
+  methods:
+    - pdf
+    - cairo 
+    - reportlab
+    - inkscape
+  output_folder: "./static/output"
 
-output_folder: "./static/output/"
-logging_level: "INFO"
-enable_tracing: true 
-trace_folder: "./logs"
+logging:
+  level: INFO
+  enable: true
+  output_folder: ./logs
