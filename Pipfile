@@ -12,10 +12,10 @@ rlpycairo = "*"
 spire = "*"
 pdf2image = "*"
 pytest = "*"
-svg-to-png-app = {file = ".", editable = true}
 reportlab = "*"
 pyyaml = "*"
 svglib = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

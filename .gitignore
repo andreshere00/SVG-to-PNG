@@ -1,0 +1,8 @@
+# Cache files
+*cache*
+
+# Log files
+*/logs/*
+
+# Environment files
+*.env

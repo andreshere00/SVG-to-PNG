@@ -3,7 +3,14 @@ from src.services.processor.svg_processor import SVGProcessor
 from src.utils.validator import SVGValidator
 from src.config.logs.logger import logger
 from src.utils.config_loader import load_config
+from dotenv import load_dotenv
+import os
+import sys
 
+load_dotenv()
+pythonpath = os.getenv("PYTHONPATH")
+if pythonpath:
+    sys.path.append(pythonpath)
 
 def main():
     parser = argparse.ArgumentParser(description="Convert SVG to PNG.")
