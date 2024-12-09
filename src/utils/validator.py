@@ -1,10 +1,9 @@
 import os
 from xml.etree import ElementTree
 
+
 class SVGValidator:
-    """
-    Class to handle SVG validation and output directory management.
-    """
+    """Class to handle SVG validation and output directory management."""
 
     @staticmethod
     def validate_svg(file_path: str) -> bool:

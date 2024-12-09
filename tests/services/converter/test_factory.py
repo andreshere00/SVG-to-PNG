@@ -1,11 +1,12 @@
 # tests/services/converter/test_factory.py
 
 import unittest
-from src.services.converter.svg_factory import ConverterFactory
+
 from src.methods.svg2pdf2png import PDFToPNGConverter
 from src.methods.svg2png_cairo import CairoSVGConverter
 from src.methods.svg2png_inkscape import InkscapeSVGConverter
 from src.methods.svg2png_reportlab import ReportLabSVGConverter
+from src.services.converter.svg_factory import ConverterFactory
 
 
 class TestConverterFactory(unittest.TestCase):

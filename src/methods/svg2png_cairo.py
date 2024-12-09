@@ -1,13 +1,12 @@
 from cairosvg import svg2png
 
+
 class CairoSVGConverter:
-    """
-    A converter class to process SVG files into PNG format using CairoSVG.
-    """
+    """A converter class to process SVG files into PNG format using CairoSVG."""
 
     def convert(self, input_file: str, output_file: str) -> str:
         """
-        Converts an SVG string to a PNG file using CairoSVG.
+        Convert an SVG string to a PNG file using CairoSVG.
 
         Args:
             svg_code (str): SVG content as a string.
@@ -21,5 +20,4 @@ class CairoSVGConverter:
                 svg2png(file_obj=svg_file, write_to=output_file)
             return output_file
         except Exception as e:
-            print(f"Failed to convert SVG to PNG using CairoSVG: {e}")
-            return None
+            raise RuntimeError(f"Failed to convert SVG to PNG using CairoSVG: {e}")

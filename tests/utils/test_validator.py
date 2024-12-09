@@ -1,6 +1,8 @@
 import os
 import unittest
+
 from src.utils.validator import SVGValidator
+
 
 class TestSVGValidator(unittest.TestCase):
 

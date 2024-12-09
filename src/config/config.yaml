@@ -2,7 +2,7 @@ svg_conversion:
   default: pdf
   methods:
     - pdf
-    - cairo 
+    - cairo
     - reportlab
     - inkscape
   output_folder: "./static/output"
