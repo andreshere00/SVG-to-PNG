@@ -4,9 +4,9 @@ from src.services.processor.svg_processor import SVGProcessor
 import os
 import uuid
 
-app = FastAPI()
+app = FastAPI(title="SVG to PNG conversor")
 
-UPLOAD_FOLDER = "./static/input/"
+UPLOAD_FOLDER = "./static/uploads/"
 OUTPUT_FOLDER = "./static/output/"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
