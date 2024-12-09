@@ -14,8 +14,8 @@ class SVGProcessor:
         Initialize the processor and set up the conversion method.
         """
         config = load_config()
-        self.method = config.get("default_method", "pdf")
-        self.trace_folder = config.get("trace_folder", "./logs")
+        self.method = config.get("svg_conversion", {}).get("default", "pdf")
+        self.trace_folder = config.get("logging", {}).get("output_folder", "./logs")
         os.makedirs(self.trace_folder, exist_ok=True)
         self.converter = converter or ConverterFactory.get_converter(self.method)
 
@@ -32,7 +32,10 @@ class SVGProcessor:
             str: Path to the output PNG file if successful.
         """
         try:
-            return self.converter.convert(input_file, output_file)
+            result = self.converter.convert(input_file, output_file)
+            logger.info(f"Converted {input_file} to {output_file} using method '{self.method}'")
+            return result
         except Exception as e:
+            # Log any errors during the conversion process
             logger.error(f"Failed to process SVG file: {e}")
             return None
