@@ -27,10 +27,13 @@ Detailed documentation available in the /docs directory.
 
 ### Pre-requisites
 
+The following packages and programs should be installed before launching the application:
+
 - [Python](https://www.python.org/) 3.12 or higher.
 - [Pipenv](https://pipenv.pypa.io/en/latest/) (for dependency management).
 - [Inkscape](https://wiki.inkscape.org/wiki/Installing_Inkscape) (Optional).
 - [Docker](https://docs.docker.com/engine/install/) (Optional).
+- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) (Optional, but strongly recommended for Windows users, since the instructions are the same as the Ubuntu users showed in this guide).
 
 
 ### Steps
@@ -62,7 +65,11 @@ sudo apt install inkscape     # Ubuntu/Debian
 
 ## Usage
 
-The application can be used either in CLI or API.
+The application can be used either in CLI or API. Configurations must be provided beforehand in the [`config.yaml`](./src/config/config.yaml) file. Additionally, `PYTHONPATH` must be defined in an environment file (can be created as follows):
+
+```bash
+mv .env.template .env
+```
 
 ### Command-Line Interface (CLI)
 
@@ -70,7 +77,7 @@ The application can be used either in CLI or API.
 pipenv run python src/interfaces/cli/main.py --input <input_file.svg> --output <output_file.png>
 ```
 
-Following the assets provided in the repository:
+Following the assets provided in the repository as example:
 
 ```bash
 pipenv run python src/interfaces/cli/main.py --input static/input/input.svg --output static/output/output.svg
@@ -88,7 +95,7 @@ uvicorn src.interfaces.api.main:app --reload --host 0.0.0.0 --port 8000
 
 ```bash
 sudo docker build -t svg-to-png .
-sudo docker run --env-file .env
+sudo docker run --env-file .env svg-to-png
 ```
 
 Default methods can be found on `http://localhost:8000/docs`. Note that port 8000 should be opened in order to access to the API through the browser.
@@ -150,8 +157,7 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 │       ├── test_convert.py
 │       └── test_download.py
 ├── docs/                      # Documentation
-│   ├── usage.md               # User guide for CLI and API
-│   ├── architecture.md        # Architectural design
+│   ├── main.md                # User guide for CLI and API
 │   └── config.md              # Configuration details
 ├── static/                    # Static files
 │   ├── input/                 # Sample input files
@@ -182,6 +188,7 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 
 ## Next steps
 
-1. Aggregate support to process multiple files by console.
-2. Incorporate an e2e (end-to-end) feature to use several conversion methods at once.
-3. Add mechanisms to CI/CD (Continuous Integration & Continuous Deployment), if needed.
+1. Add hooks and pre-commit configurations.
+2. Aggregate support to process multiple files by console.
+3. Incorporate an e2e (end-to-end) feature to use several conversion methods at once.
+4. Add mechanisms to CI/CD (Continuous Integration & Continuous Deployment), if needed.

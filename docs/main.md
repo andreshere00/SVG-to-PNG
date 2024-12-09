@@ -79,10 +79,22 @@ Note that port 8000 should be accessible through the machine executing the appli
 
 ##### With docker
 
-Start the API server:
+Build the docker container:
+
+```bash
+sudo docker compose build -t svg-to-png .
+```
+
+Start the API server using docker compose:
 
 ```bash
 sudo docker-compose up
+```
+
+Or a docker container directly:
+
+```bash
+sudo docker run --env-file .env svg-to-png 
 ```
 
 ##### Without docker

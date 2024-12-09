@@ -11,13 +11,16 @@ pycairo = "*"
 rlpycairo = "*"
 spire = "*"
 pdf2image = "*"
-pytest = "*"
 reportlab = "*"
 pyyaml = "*"
 svglib = "*"
 python-dotenv = "*"
+uvicorn = "*"
+fastapi = "*"
+python-multipart = "*"
 
 [dev-packages]
+pytest = "*"
 
 [requires]
 python_version = "3.13"

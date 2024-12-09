@@ -1,17 +1,10 @@
 # Use an official Python image as the base image
 FROM python:3.12-slim
 
-# Set environment variables
-ENV PYTHONPATH=/app/src
-ENV PATH=/usr/local/bin:$PATH
-
 # Create and set the working directory
 WORKDIR /app
 
-# Copy Pipfile and Pipfile.lock
-COPY Pipfile Pipfile.lock /app/
-
-# Install dependencies, including Poppler
+# Install system-level dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     g++ \
@@ -25,7 +18,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies using pipenv
+# Copy Pipfile and Pipfile.lock
+COPY Pipfile Pipfile.lock /app/
+
+# Install code-level dependencies
 RUN pip install --upgrade pip \
     && pip install pipenv \
     && pipenv install --system --deploy
