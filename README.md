@@ -64,6 +64,12 @@ sudo apt install inkscape     # Ubuntu/Debian
 pipenv run python src/interfaces/cli/main.py --input <input_file.svg> --output <output_file.png>
 ```
 
+Following the assets provided in the repository:
+
+```bash
+pipenv run python src/interfaces/cli/main.py --input static/input/input.svg --output static/output/output.svg
+```
+
 
 ### Application Program Interface (API)
 

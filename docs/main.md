@@ -47,21 +47,31 @@ The main steps include:
 
 A PNG file is created at the specified `--output` path if the conversion is successful.
 
-## Example
+## Execution example
+
+### CLI without docker
 
 ```bash
 pipenv run python src/interfaces/cli/main.py --input ./static/input/input.svg --output ./static/output/output.png
 ```
 
-### Example Output (Success)
+### CLI with docker
+
+```bash
+sudo docker build -t svg-to-png .
+sudo docker run -it -v $(pwd):/app --env-file .env svg-to-png --input /app/static/input/input.svg --output /app/static/output/output.png
+```
+
+### Outputs
+
+#### Success
 
 ```bash
 PNG saved at: ./static/output.png
 ```
 
-### Example Output (Failure)
+#### Failure
 
-Invalid SVG input:
 ```bash
 Invalid input file. Please provide a valid SVG file.
 ```

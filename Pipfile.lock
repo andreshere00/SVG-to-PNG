@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0e831d787df5cb806a624a98bc67283bff81a3069f7f3cc4d60685270e657090"
+            "sha256": "d1a0feb82e30718a016bf553b949650575c1ac5b5f1fc88cd1db7c7ff3bfc170"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -437,6 +437,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==8.3.4"
         },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca",
+                "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==1.0.1"
+        },
         "pyyaml": {
             "hashes": [
                 "sha256:01179a4a8559ab5de078078f37e5c1a30d76bb88519906844fd7bdea1b7729ff",
@@ -521,10 +530,6 @@
             ],
             "index": "pypi",
             "version": "==0.4.2"
-        },
-        "svg-to-png-app": {
-            "editable": true,
-            "file": "."
         },
         "svglib": {
             "hashes": [
