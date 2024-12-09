@@ -1,26 +1,26 @@
-import subprocess
 import os
 import shutil
+import subprocess
 
 
 class InkscapeSVGConverter:
-    """
-    A converter class to process SVG files into PNG format using the Inkscape CLI.
-    """
+    """A converter class to process SVG files into PNG format using the Inkscape CLI."""
 
     def __init__(self):
         """
-        Initializes the converter and ensures the Inkscape CLI is available.
+        Initialize the converter and ensures the Inkscape CLI is available.
 
         Raises:
             RuntimeError: If the Inkscape CLI is not found in the system PATH.
         """
         if not shutil.which("inkscape"):
-            raise RuntimeError("Inkscape CLI not found. Ensure Inkscape is installed and added to the PATH.")
+            raise RuntimeError(
+                "Inkscape CLI not found. Ensure Inkscape is installed and added to the PATH."
+            )
 
     def convert(self, input_file: str, output_file: str) -> str:
         """
-        Converts an SVG file to a PNG file using the Inkscape CLI.
+        Convert an SVG file to a PNG file using the Inkscape CLI.
 
         Args:
             input_file (str): Path to the input SVG file.
@@ -36,11 +36,15 @@ class InkscapeSVGConverter:
             raise FileNotFoundError(f"Input SVG file not found: {input_file}")
 
         try:
-            subprocess.run([
-                "inkscape", input_file,
-                "--export-type=png",
-                "--export-filename=" + output_file
-            ], check=True)
+            subprocess.run(
+                [
+                    "inkscape",
+                    input_file,
+                    "--export-type=png",
+                    "--export-filename=" + output_file,
+                ],
+                check=True,
+            )
             return output_file
         except subprocess.CalledProcessError as e:
             raise RuntimeError(f"Failed to convert SVG using Inkscape: {e}")

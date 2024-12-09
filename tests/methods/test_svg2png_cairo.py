@@ -1,5 +1,7 @@
 import unittest
+
 from src.methods.svg2png_cairo import CairoSVGConverter
+
 
 class TestCairoSVGConverter(unittest.TestCase):
     def test_convert(self):

@@ -1,16 +1,15 @@
-from svglib.svglib import svg2rlg
-from reportlab.graphics import renderPDF, renderPM
 import os
+
+from reportlab.graphics import renderPM
+from svglib.svglib import svg2rlg
 
 
 class ReportLabSVGConverter:
-    """
-    A converter class to process SVG files into PNG format using ReportLab and svglib.
-    """
+    """Process SVG files into PNG format using ReportLab and svglib."""
 
     def convert(self, input_file: str, output_file: str) -> str:
         """
-        Converts an SVG file to a PNG file using ReportLab.
+        Convert an SVG file to a PNG file using ReportLab.
 
         Args:
             input_file (str): Path to the input SVG file.
@@ -22,6 +21,7 @@ class ReportLabSVGConverter:
         Raises:
             RuntimeError: If the conversion fails.
         """
+
         if not os.path.exists(input_file):
             raise FileNotFoundError(f"Input SVG file not found: {input_file}")
 

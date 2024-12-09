@@ -94,7 +94,7 @@ sudo docker-compose up
 Or a docker container directly:
 
 ```bash
-sudo docker run --env-file .env svg-to-png 
+sudo docker run --env-file .env svg-to-png
 ```
 
 ##### Without docker
@@ -123,7 +123,7 @@ curl -X POST -F "file_id=<file_id>" -F "output_format=png" http://localhost:8000
 curl -X GET "http://localhost:8000/download-png/?file_path=<file_path>" -o output.png
 ```
 
-These requests should be launched from the machine which is executing the application, either the Docker itself or the local machine. For entering into the docker machine and execute the commands, see the following (guide)[https://docs.docker.com/reference/cli/docker/container/exec/]. 
+These requests should be launched from the machine which is executing the application, either the Docker itself or the local machine. For entering into the docker machine and execute the commands, see the following (guide)[https://docs.docker.com/reference/cli/docker/container/exec/].
 
 ## Configuration
 

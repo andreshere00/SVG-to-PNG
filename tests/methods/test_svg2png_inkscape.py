@@ -1,7 +1,9 @@
-import unittest
-from src.methods.svg2png_inkscape import InkscapeSVGConverter
 import os
 import shutil
+import unittest
+
+from src.methods.svg2png_inkscape import InkscapeSVGConverter
+
 
 class TestInkscapeSVGConverter(unittest.TestCase):
     def test_inkscape_cli_missing(self):
