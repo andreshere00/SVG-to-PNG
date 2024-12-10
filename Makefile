@@ -6,16 +6,20 @@ IMAGE_NAME = svg-to-png
 ENV_FILE = .env
 
 # Targets
-.PHONY: build run d-build d-run autopep8 pre-commit help
+.PHONY: serve build run d-build d-run autopep8 pre-commit help
 
 help:
 	@echo "Available commands:"
+	@echo "  make serve       - Build and start services using docker-compose."
 	@echo "  make build       - Build Docker images using docker-compose."
 	@echo "  make run         - Start containers using docker-compose."
-	@echo "  make d-build     - Build a Docker image from the Dockerfile."
-	@echo "  make d-run       - Run a Docker container with the specified environment file."
+	@echo "  make prune       - Remove all stopped containers."
 	@echo "  make autopep8    - Format code with autopep8."
 	@echo "  make pre-commit  - Install and run pre-commit hooks on all files."
+
+serve:
+	$(DOCKER) container prune --force
+	$(DOCKER) compose up --build
 
 build:
 	$(DOCKER) compose build

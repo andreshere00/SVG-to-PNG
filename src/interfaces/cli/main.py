@@ -24,9 +24,8 @@ def main():
     # Load configuration
     config_loader = ConfigLoader()
     config = config_loader.load()
-    method = config.get("svg_conversion", {}).get("default", "pdf")
 
-    logger.info(f"Initializing application with default method: {method}")
+    logger.info("Initializing application.")
 
     # Parse CLI arguments
     parser = argparse.ArgumentParser(description="Convert SVG to PNG.")

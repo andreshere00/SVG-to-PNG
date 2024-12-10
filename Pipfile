@@ -24,6 +24,9 @@ pyyaml = "*"
 stubs = "*"
 pre-commit = "*"
 types-pyyaml = "*"
+requests = "*"
+streamlit = "*"
+watchdog = "*"
 
 [dev-packages]
 pytest = "*"

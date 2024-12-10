@@ -19,7 +19,7 @@ class SVGProcessor:
         self.logger = logger_manager.logger
 
         # Get method and trace folder from the configuration
-        self.method = self.config.get("svg_conversion", {}).get("default", "pdf")
+        self.method = self.config.get("svg_conversion", {}).get("methods", "cairo")
         self.trace_folder = self.config.get("logging", {}).get("output_folder", "./logs")
         os.makedirs(self.trace_folder, exist_ok=True)
 

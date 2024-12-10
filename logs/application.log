@@ -8,3 +8,88 @@
 2024-12-10 00:09:36,023 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
 2024-12-10 00:09:36,071 - INFO - Converted ./static/input/input.svg to ./static/output/output.png using method 'pdf'
 2024-12-10 00:09:36,071 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-09 23:45:06,606 - INFO - Converted ./static/uploads/f6f4f9a4-3208-4012-a8f1-22596bea8971.svg to ./static/output/f6f4f9a4-3208-4012-a8f1-22596bea8971.png using method 'pdf'
+2024-12-10 02:00:17,902 - INFO - Initializing application with default method: pdf
+2024-12-10 02:00:17,903 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:00:17,968 - INFO - Converted ./static/input/input.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:00:17,968 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:00:34,962 - INFO - Initializing application with default method: pdf
+2024-12-10 02:00:34,962 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:00:35,011 - INFO - Converted ./static/input/input.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:00:35,011 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:00:43,434 - INFO - Initializing application with default method: pdf
+2024-12-10 02:00:43,434 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:00:43,469 - INFO - Converted ./static/input/input.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:00:43,469 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:01:16,035 - INFO - Initializing application with default method: pdf
+2024-12-10 02:01:16,036 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:01:25,243 - INFO - Initializing application with default method: pdf
+2024-12-10 02:01:25,243 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:01:32,950 - INFO - Initializing application with default method: pdf
+2024-12-10 02:01:32,950 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:01:33,407 - INFO - Converted ./static/input/input.svg to ./static/output/output.png using method 'inkscape'
+2024-12-10 02:01:33,407 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:02:19,330 - INFO - Initializing application.
+2024-12-10 02:02:19,331 - INFO - Processing input file: ./static/input/input.svg with output target: ./static/output/output.png
+2024-12-10 02:02:19,766 - INFO - Converted ./static/input/input.svg to ./static/output/output.png using method 'inkscape'
+2024-12-10 02:02:19,766 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:04:18,935 - INFO - Initializing application.
+2024-12-10 02:04:18,936 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:04:19,310 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'inkscape'
+2024-12-10 02:04:19,311 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:06:25,853 - INFO - Initializing application.
+2024-12-10 02:06:25,854 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:06:37,273 - INFO - Initializing application.
+2024-12-10 02:06:37,274 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:06:37,301 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'reportlab'
+2024-12-10 02:06:37,301 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:06:51,962 - INFO - Initializing application.
+2024-12-10 02:06:51,962 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:06:52,033 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:06:52,033 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:07:05,455 - INFO - Initializing application.
+2024-12-10 02:07:05,456 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:07:05,488 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
+2024-12-10 02:07:05,488 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:09:23,522 - INFO - Initializing application.
+2024-12-10 02:09:23,523 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:09:23,546 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
+2024-12-10 02:09:23,546 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:19:01,073 - INFO - Initializing application.
+2024-12-10 02:19:01,074 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:19:01,143 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:19:01,143 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:19:34,324 - INFO - Initializing application.
+2024-12-10 02:19:34,325 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:19:34,394 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:19:34,394 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:19:58,739 - INFO - Initializing application.
+2024-12-10 02:19:58,740 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:19:58,763 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
+2024-12-10 02:19:58,763 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:20:37,221 - INFO - Initializing application.
+2024-12-10 02:20:37,222 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:20:37,246 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
+2024-12-10 02:20:37,246 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:20:49,585 - INFO - Initializing application.
+2024-12-10 02:20:49,586 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:20:49,609 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
+2024-12-10 02:20:49,609 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:21:57,666 - INFO - Initializing application.
+2024-12-10 02:21:57,666 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:21:57,723 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'reportlab'
+2024-12-10 02:21:57,723 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:22:14,636 - INFO - Initializing application.
+2024-12-10 02:22:14,637 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:22:14,717 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'pdf'
+2024-12-10 02:22:14,717 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:22:22,250 - INFO - Initializing application.
+2024-12-10 02:22:22,250 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:22:22,547 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'inkscape'
+2024-12-10 02:22:22,547 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:22:49,774 - INFO - Initializing application.
+2024-12-10 02:22:49,775 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
+2024-12-10 02:22:49,800 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
+2024-12-10 02:22:49,800 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:40:43,423 - INFO - Converted ./static/uploads/834ec7e3-c075-45ea-9843-4d0957566a6a.svg to ./static/output/834ec7e3-c075-45ea-9843-4d0957566a6a.png using method 'cairo'
+2024-12-10 02:40:45,713 - INFO - Converted ./static/uploads/b10f851f-539d-4603-8d43-1246cefdda0c.svg to ./static/output/b10f851f-539d-4603-8d43-1246cefdda0c.png using method 'cairo'
