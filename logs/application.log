@@ -91,3 +91,5 @@
 2024-12-10 02:22:49,775 - INFO - Processing input file: static/input/shard_merging.drawio.svg with output target: ./static/output/output.png
 2024-12-10 02:22:49,800 - INFO - Converted static/input/shard_merging.drawio.svg to ./static/output/output.png using method 'cairo'
 2024-12-10 02:22:49,800 - INFO - Conversion successful. Output saved at: ./static/output/output.png
+2024-12-10 02:40:43,423 - INFO - Converted ./static/uploads/834ec7e3-c075-45ea-9843-4d0957566a6a.svg to ./static/output/834ec7e3-c075-45ea-9843-4d0957566a6a.png using method 'cairo'
+2024-12-10 02:40:45,713 - INFO - Converted ./static/uploads/b10f851f-539d-4603-8d43-1246cefdda0c.svg to ./static/output/b10f851f-539d-4603-8d43-1246cefdda0c.png using method 'cairo'

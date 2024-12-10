@@ -4,7 +4,7 @@ import os
 
 API_PORT = os.getenv("API_PORT", "8000")
 API_HOST = os.getenv("API_HOST", "localhost")
-API_BASE_URL = f"http://{API_HOST}:{API_PORT}"
+API_BASE_URL = f"http://{API_HOST}:{API_PORT}/api"
 
 
 def upload_svg(file) -> str:
@@ -75,6 +75,7 @@ st.title("SVG to PNG Converter")
 st.write("Upload an SVG file, and get a PNG version of it.")
 
 uploaded_file = st.file_uploader("Upload SVG file", type=["svg"])
+print(uploaded_file)
 
 if uploaded_file is not None:
     try:
