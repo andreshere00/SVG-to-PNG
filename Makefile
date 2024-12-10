@@ -18,7 +18,7 @@ help:
 	@echo "  make pre-commit  - Install and run pre-commit hooks on all files."
 
 serve:
-	$(DOCKER) container prune --force
+	cp .env.template .env
 	$(DOCKER) compose up --build
 
 build:
@@ -27,16 +27,14 @@ build:
 run:
 	$(DOCKER) compose up
 
-d-build:
-	$(DOCKER) build -t $(IMAGE_NAME) .
-
-d-run:
-	$(DOCKER) run --env-file $(ENV_FILE) $(IMAGE_NAME)
+prune:
+	$(DOCKER) container prune --force
 
 autopep8:
 	$(PIPENV) $(PEP8) --in-place --recursive .
 
 pre-commit:
-	$(PIPENV) install --dev
-	$(PIPENV) run pre-commit install
-	$(PIPENV) run pre-commit run --all-files
+	pipenv install --dev
+	$(PIPENV) pre-commit install
+	$(PIPENV) pre-commit autoupdate
+	$(PIPENV) pre-commit run --all-files

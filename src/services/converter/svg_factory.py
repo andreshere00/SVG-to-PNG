@@ -5,29 +5,48 @@ from src.methods.svg2png_reportlab import ReportLabSVGConverter
 
 
 class ConverterFactory:
-    """Provide the corresponding converter based on the method."""
+    """Factory class to create converter instances based on the specified method."""
 
     @staticmethod
-    def get_converter(method: str):
+    def get_supported_methods():
         """
-        Return the corresponding converter instance based on the method.
-
-        Args:
-            method (str): The method for conversion ("pdf", "cairo", "inkscape", "reportlab").
+        Get the list of supported conversion methods.
 
         Returns:
-            An instance of the corresponding converter.
+            list: List of supported conversion method names.
+        """
+        return {
+            "cairo": CairoSVGConverter,
+            "reportlab": ReportLabSVGConverter,
+            "inkscape": InkscapeSVGConverter,
+            "pdf": PDFToPNGConverter,
+        }.keys()
+
+    @staticmethod
+    def get_converter(conversion_method: str):
+        """
+        Get the appropriate converter based on the conversion method.
+
+        Args:
+            conversion_method (str): The conversion method to use.
+
+        Returns:
+            BaseConverter: An instance of the appropriate converter class.
 
         Raises:
-            ValueError: If the method is unsupported.
+            ValueError: If the specified conversion method is not supported.
         """
-        if method == "pdf":
-            return PDFToPNGConverter()
-        elif method == "cairo":
-            return CairoSVGConverter()
-        elif method == "inkscape":
-            return InkscapeSVGConverter()
-        elif method == "reportlab":
-            return ReportLabSVGConverter()
-        else:
-            raise ValueError(f"Unsupported conversion method: {method}")
+        supported_methods = {
+            "cairo": CairoSVGConverter,
+            "reportlab": ReportLabSVGConverter,
+            "inkscape": InkscapeSVGConverter,
+            "pdf": PDFToPNGConverter,
+        }
+
+        if conversion_method not in supported_methods:
+            raise ValueError(
+                f"Unsupported conversion method: {conversion_method}. "
+                f"Supported methods: {list(supported_methods.keys())}"
+            )
+
+        return supported_methods[conversion_method]()

@@ -33,4 +33,4 @@ COPY . /app
 EXPOSE 8501
 
 # Define the entrypoint
-CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "src.interfaces.api.frontend.app.py", "--server.port=8501", "--server.address=0.0.0.0"]
