@@ -40,6 +40,7 @@ docformatter = "*"
 autopep8 = "*"
 mypy = "*"
 pytest-cov = "*"
+git-changelog = "*"
 
 [requires]
 python_version = "^3.9"
