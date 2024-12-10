@@ -4,6 +4,7 @@ PIPENV = pipenv run
 PEP8 = autopep8
 IMAGE_NAME = svg-to-png
 ENV_FILE = .env
+CHANGELOG_FILE = CHANGELOG.md
 
 # Targets
 .PHONY: serve build run prune autopep8 pre-commit changelog release help
@@ -42,23 +43,24 @@ pre-commit:
 	$(PIPENV) pre-commit run --all-files
 
 changelog:
-	# Generate a basic changelog with git-changelog and git log
-	$(PIPENV) git-changelog > CHANGELOG.md
-	$(PIPENV) git log --pretty=format:"- %s (%h)" >> CHANGELOG.md
-	$(PIPENV) git log --pretty=format:"- %s (%h) by %an on %ad" --date=short >> CHANGELOG.md
+	# Generate a changelog and insert it at the marker
+	TMP_CHANGELOG=$$(mktemp); \
+	$(PIPENV) git log --pretty=format:"- %s ([%h](https://github.com/andreshere00/SVG-to-PNG/commit/%h)) by %an on %ad" --date=short > $$TMP_CHANGELOG; \
+	awk -v new_changelog=$$TMP_CHANGELOG '1; /<!-- insertion marker -->/ { while(getline line < new_changelog) print line; }' $(CHANGELOG_FILE) > $(CHANGELOG_FILE).new; \
+	mv $(CHANGELOG_FILE).new $(CHANGELOG_FILE); \
+	rm $$TMP_CHANGELOG; \
+	echo "Changelog updated successfully!"
 
 release:
-	# Create a new version
+	# Create a new release
 	@echo "Enter the new version (e.g., v1.0.0): "
 	@read version; \
 	echo "Releasing $$version..."; \
 	git tag $$version; \
 	git push origin $$version; \
-	echo "Generating changelog..."; \
-	$(PIPENV) git-changelog > CHANGELOG.md; \
-	$(PIPENV) git log --pretty=format:"- %s (%h)" >> CHANGELOG.md; \
-	$(PIPENV) git log --pretty=format:"- %s (%h) by %an on %ad" --date=short >> CHANGELOG.md; \
-	git add CHANGELOG.md; \
+	echo "Updating changelog..."; \
+	make changelog; \
+	git add $(CHANGELOG_FILE); \
 	git commit -m "Update changelog for $$version"; \
 	git push origin main; \
 	echo "Release $$version completed."
