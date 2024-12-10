@@ -34,6 +34,7 @@ autopep8:
 	$(PIPENV) $(PEP8) --in-place --recursive .
 
 pre-commit:
-	$(PIPENV) install --dev
-	$(PIPENV) run pre-commit install
-	$(PIPENV) run pre-commit run --all-files
+	pipenv install --dev
+	$(PIPENV) pre-commit install
+	$(PIPENV) pre-commit autoupdate
+	$(PIPENV) pre-commit run --all-files

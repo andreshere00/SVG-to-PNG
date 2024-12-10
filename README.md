@@ -87,29 +87,47 @@ make serve
 
 This will build the docker images for the backend and frontend services and launch the application. Frontend application will be launched on port 8051 and backend application on port 8000. These values can be configured via the `.env` file (modify [`.env.template`](./.env.template)).
 
+Access through the browser in the IP address [`http://0.0.0.0:8501`](`http://0.0.0.0:8501`).
+
 #### Docker & Compose
 
 ```bash
 docker compose up --build
 ```
 
+Access through the browser in the IP [`http://0.0.0.0:8501`](`http://0.0.0.0:8501`).
+
+#### Vanilla
+
+Launch both services relying solely on local machine:
+
+Backend service:
+
+```bash
+pipenv shell
+pipenv run uvicorn src.interfaces.api.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Frontend service:
+
+```bash
+pipenv shell
+pipenv run streamlit run src.interfaces.api.frontend.app.py --server.port=8501 --server.address=0.0.0.0
+```
+
+Access through the browser in the IP [`http://0.0.0.0:8501`](`http://0.0.0.0:8501`).
+
 ### Command-Line Interface (CLI)
 
 ```bash
 pipenv shell
-```
-
-```bash
 pipenv install
-```
-
-```bash
 pipenv run python src/interfaces/cli/main.py --input <input_file.svg> --output <output_file.png>
 ```
 
 NOTE: you may need some of the external dependencies listed previously (see [Pre-requisites section](#pre-requisites)).
 
-Example:
+**Example:**
 
 ```bash
 pipenv run python src/interfaces/cli/main.py --input static/input/input.svg --output static/output/output.svg
@@ -123,66 +141,79 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 
 ```
 .
-├── src/
-│   ├── config/
-│   │   ├── config.yaml        # Configuration file
-│   │   ├── logs/              # Logger configuration
-│   │   │   └── logger.py      # Logger setup
-│   │   └── __init__.py
-│   ├── interfaces/
-│   │   ├── cli/               # Command-line interface
-│   │   │   ├── __init__.py
-│   │   │   └── main.py        # CLI entrypoint
-│   │   ├── api/
-│   │   │   ├── routes/            # API endpoints
-│   │   │   │   ├──__init__.py
-│   │   │   │   ├── upload.py      # Upload API
-│   │   │   │   ├── convert.py     # Convert API
-│   │   │   │   └── download.py    # Download API
-│   │   │   ├── __init__.py
-│   │   │   └── main.py            # API entrypoint
-│   │   └── __init__.py
-│   ├── services/
-│   │   ├── processor/         # Main processing logic
-│   │   │   ├── __init__.py
-│   │   │   └── svg_processor.py
-│   │   ├── converter/         # Conversion logic
-│   │   │   ├── __init__.py
-│   │   │   ├── factory.py
-│   │   │   ├── svg2pdf2png.py
-│   │   │   ├── svg2png_cairo.py
-│   │   │   ├── svg2png_inkscape.py
-│   │   │   └── svg2png_reportlab.py
-│   ├── utils/
-│   │   ├── __init__.py
-│   │   ├── tracer.py          # Tracing utilities
-│   │   ├── validator.py       # Input validation
-│   │   └── config_loader.py   # Config loader
-├── tests/                     # Unit tests
+├── tests/
+│   ├── assets/
+│   │   ├── output.png
+│   │   └── sample.svg
 │   ├── methods/
+│   │   ├── __init__.py
 │   │   ├── test_svg2pdf2png.py
 │   │   ├── test_svg2png_cairo.py
 │   │   ├── test_svg2png_inkscape.py
 │   │   └── test_svg2png_reportlab.py
 │   ├── services/
-│   │   ├── test_factory.py
-│   │   └── test_svg_processor.py
-│   └── api/
-│       ├── test_upload.py
-│       ├── test_convert.py
-│       └── test_download.py
-├── docs/                      # Documentation
-│   ├── main.md                # User guide for CLI and API
-│   └── config.md              # Configuration details
-├── static/                    # Static files
-│   ├── input/                 # Sample input files
-│   └── output/                # Generated output files
-├── Pipfile                    # Dependency management
-├── Pipfile.lock               # Locked dependencies
-├── Dockerfile                 # Docker setup
-├── docker-compose.yaml        # Docker Compose setup
-├── .env                       # Environment variables
-└── README.md                  # Project overview
+│   │   ├── converter/
+│   │   │   ├── __init__.py
+│   │   │   └── test_factory.py
+│   │   └── processor/
+│   │       ├── __init__.py
+│   │       └── test_svg_processor.py
+│   └── utils/
+│       ├── __init__.py
+│       └── test_validator.py
+├── docs/
+│   ├── config.md
+│   └── main.md
+├── logs/
+├── src/
+│   ├── config/
+│   │   ├── logs/
+│   │   │   ├── logger.py
+│   │   │   └── __init__.py
+│   │   └── config.yaml
+│   ├── interfaces/
+│   │   ├── api/
+│   │   │   ├── frontend/
+│   │   │   │   └── app.py
+│   │   │   ├── routes/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── convert.py
+│   │   │   │   ├── download.py
+│   │   │   │   └── upload.py
+│   │   │   └── main.py
+│   │   └── cli/
+│   │       ├── __init__.py
+│   │       └── main.py
+│   ├── methods/
+│   │   ├── svg2pdf2png.py
+│   │   ├── svg2png_cairo.py
+│   │   ├── svg2png_inkscape.py
+│   │   ├── svg2png_reportlab.py
+│   │   └── __init__.py
+│   ├── services/
+│   │   ├── converter/
+│   │   │   ├── __init__.py
+│   │   │   └── svg_factory.py
+│   │   └── processor/
+│   │       ├── __init__.py
+│   │       └── svg_processor.py
+│   └── utils/
+│       ├── __init__.py
+│       ├── config_loader.py
+│       ├── tracer.py
+│       └── validator.py
+├── static/
+│   ├── input/
+│   │   └── input.svg
+│   ├── output/
+│   │   ├── output.png
+│   │   └── uploads/
+├── Pipfile
+├── Pipfile.lock
+├── Dockerfile
+├── docker-compose.yaml
+├── .env
+└── README.md
 ```
 
 
@@ -200,25 +231,29 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 4. Push to the branch: git push origin feature-name.
 5. Open a pull request.
 
-Please before commiting, ensure that `pre-commit` is installed, along with their hooks and all the features have the appropiate documentation and tests. Any feature without tests or documentation will not be approved to be merged, or in some cases, it will be deleted.
+> ⚠️ **Warning**:
+> Please, before committing, ensure that `pre-commit` is installed, along with their hooks and all the features have the appropriate documentation and tests.
+> Any feature without tests or documentation will not be approved to be merged, or in some cases, it will be deleted.
 
-### Installing hooks and pre-commit
+### Install hooks and pre-commit
+
+You can simply use Make:
+
+```bash
+make pre-commit
+```
+
+Or manually execute:
 
 ```bash
 pipenv install -d
 pipenv run pre-commit install
 pipenv run pre-commit autoupdate
-```
-
-Direct execution of the hooks can be carried out with the following command:
-
-```bash
 pipenv run pre-commit run --all-files
 ```
 
 ## Next steps
 
-1. Add hooks and pre-commit configurations.
-2. Aggregate support to process multiple files by console.
-3. Incorporate an e2e (end-to-end) feature to use several conversion methods at once.
-4. Add mechanisms to CI/CD (Continuous Integration & Continuous Deployment), if needed.
+1. Aggregate support to process multiple files by console.
+2. Incorporate an e2e (end-to-end) feature to use several conversion methods at once.
+3. Add mechanisms to CI/CD (Continuous Integration & Continuous Deployment), if needed.
