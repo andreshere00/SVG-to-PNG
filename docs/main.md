@@ -75,7 +75,7 @@ Invalid input file. Please provide a valid SVG file.
 
 #### Execution
 
-Note that port 8000 should be accessible through the machine executing the application.
+
 
 ##### With docker
 

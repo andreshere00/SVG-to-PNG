@@ -18,7 +18,7 @@ help:
 	@echo "  make pre-commit  - Install and run pre-commit hooks on all files."
 
 serve:
-	$(DOCKER) container prune --force
+	cp .env.template .env
 	$(DOCKER) compose up --build
 
 build:
