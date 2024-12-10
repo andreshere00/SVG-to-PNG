@@ -108,8 +108,30 @@ def download_png(output_file: str):
 
 
 # Streamlit Interface
+st.set_page_config(page_title="SVG to PNG", page_icon="🖼️", layout="centered")
 st.title("SVG to PNG Converter")
 st.write("Upload an SVG file, choose a conversion method, and get a PNG version of it.")
+st.markdown(
+    """
+    <style>
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        color: black;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+    </style>
+    <div class="footer">
+        <p><b>Credits:</b> Andrés Herencia López-Menchero | <a href="https://linkedin.com/in/andres-herencia" target="_blank">LinkedIn Profile</a></p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 # Dynamically fetch the available conversion methods from the factory
 conversion_methods = list(ConverterFactory.get_supported_methods())

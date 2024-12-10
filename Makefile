@@ -27,11 +27,8 @@ build:
 run:
 	$(DOCKER) compose up
 
-d-build:
-	$(DOCKER) build -t $(IMAGE_NAME) .
-
-d-run:
-	$(DOCKER) run --env-file $(ENV_FILE) $(IMAGE_NAME)
+prune:
+	$(DOCKER) container prune --force
 
 autopep8:
 	$(PIPENV) $(PEP8) --in-place --recursive .

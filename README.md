@@ -13,13 +13,13 @@ This application provides a basic framework for converting SVG files to PNG form
 
 - **Traceability:**
   - Logs execution times for input processing and output conversion.
-  -  Logs are stored in a configurable directory.
+  - Logs are stored in a configurable directory.
 
 - **Configurable:**
   - Easy configuration using [`config.yaml`](./src/config/config.yaml).
   - Control logging levels, tracing, and output directories.
 
-Detailed documentation available in the /docs directory.
+Detailed documentation available in the [/docs](./docs) directory.
 
 
 ## Installation
@@ -45,6 +45,16 @@ git clone https://github.com/andreshere00/SVG-to-PNG.git
 cd SVG-to-PNG
 ```
 
+Create an `.env` file or rename the `env.template`.
+
+```bash
+cp .env.template .env
+```
+
+If you will not be used the application via CLI or without docker, it is not mandatory to follow the next steps.
+
+#### For non-dockerized environments
+
 Activate virtual environment:
 ```bash
 pipenv shell
@@ -65,47 +75,45 @@ sudo apt install inkscape     # Ubuntu/Debian
 
 ## Usage
 
-The application can be used either in CLI or API. Configurations must be provided beforehand in the [`config.yaml`](./src/config/config.yaml) file. Additionally, `PYTHONPATH` must be defined in an environment file (can be created as follows):
+### API (Application Program Interface)
+
+#### Makefile
+
+You can build and serve the application using `make`:
 
 ```bash
-mv .env.template .env
+make serve
+```
+
+This will build the docker images for the backend and frontend services and launch the application. Frontend application will be launched on port 8051 and backend application on port 8000. These values can be configured via the `.env` file (modify [`.env.template`](./.env.template)).
+
+#### Docker & Compose
+
+```bash
+docker compose up --build
 ```
 
 ### Command-Line Interface (CLI)
 
 ```bash
+pipenv shell
+```
+
+```bash
+pipenv install
+```
+
+```bash
 pipenv run python src/interfaces/cli/main.py --input <input_file.svg> --output <output_file.png>
 ```
 
-Following the assets provided in the repository as example:
+NOTE: you may need some of the external dependencies listed previously (see [Pre-requisites section](#pre-requisites)).
+
+Example:
 
 ```bash
 pipenv run python src/interfaces/cli/main.py --input static/input/input.svg --output static/output/output.svg
 ```
-
-### Application Program Interface (API)
-
-#### Without docker
-
-```bash
-uvicorn src.interfaces.api.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-#### With docker
-
-```bash
-sudo docker build -t svg-to-png .
-sudo docker run --env-file .env svg-to-png
-```
-
-Or using compose:
-
-```bash
-sudo docker-compose build
-sudo docker-compose up
-```
-
-Default methods can be found on `http://localhost:8000/docs`. Note that port 8000 should be opened in order to access to the API through the browser. Refer to the [guide](docs/main.md) for more information about deploying the application.
 
 ## Configuration
 
