@@ -1,0 +1,8 @@
+svg_conversion:
+  methods: cairo
+  output_folder: "./static/output"
+
+logging:
+  level: INFO
+  enable: true
+  output_folder: ./logs

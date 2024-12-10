@@ -1,0 +1,36 @@
+# Use an official Python image as the base image
+FROM python:3.12-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Install system-level dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    pkg-config \
+    libcairo2-dev \
+    python3-dev \
+    libpango1.0-dev \
+    poppler-utils \
+    inkscape \
+    libgtk-3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy Pipfile and Pipfile.lock
+COPY Pipfile Pipfile.lock /app/
+
+# Install Python dependencies
+RUN pip install --upgrade pip \
+    && pip install pipenv \
+    && pipenv install --system --deploy
+
+# Copy the Streamlit app files into the container
+COPY . /app
+
+# Expose the Streamlit default port
+EXPOSE 8501
+
+# Define the entrypoint
+CMD ["streamlit", "run", "src.interfaces.api.frontend.app.py", "--server.port=8501", "--server.address=0.0.0.0"]

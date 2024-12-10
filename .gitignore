@@ -1,0 +1,14 @@
+# Cache files
+*cache*
+
+# IDE configurations
+.vscode
+
+# Log files
+*/logs/*
+
+# Environment files
+*.env
+
+# Uploaded files
+static/uploads/*

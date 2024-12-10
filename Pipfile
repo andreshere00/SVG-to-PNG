@@ -1,0 +1,46 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[scripts]
+format = "black ."
+
+[packages]
+cairocffi = "*"
+cairosvg = "*"
+pillow = "*"
+pycairo = "*"
+rlpycairo = "*"
+spire = "*"
+pdf2image = "*"
+reportlab = "*"
+svglib = "*"
+python-dotenv = "*"
+uvicorn = "*"
+fastapi = "*"
+python-multipart = "*"
+pyyaml = "*"
+stubs = "*"
+pre-commit = "*"
+types-pyyaml = "*"
+requests = "*"
+streamlit = "*"
+watchdog = "*"
+make = "*"
+
+[dev-packages]
+pytest = "*"
+black = "*"
+autoflake = "*"
+isort = "*"
+pydocstyle = "*"
+pre-commit = "*"
+docformatter = "*"
+autopep8 = "*"
+mypy = "*"
+pytest-cov = "*"
+git-changelog = "*"
+
+[requires]
+python_version = "^3.9"
