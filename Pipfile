@@ -3,6 +3,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+format = "black ."
+
 [packages]
 cairocffi = "*"
 cairosvg = "*"
@@ -12,15 +15,30 @@ rlpycairo = "*"
 spire = "*"
 pdf2image = "*"
 reportlab = "*"
-pyyaml = "*"
 svglib = "*"
 python-dotenv = "*"
 uvicorn = "*"
 fastapi = "*"
 python-multipart = "*"
+pyyaml = "*"
+stubs = "*"
+pre-commit = "*"
+types-pyyaml = "*"
+requests = "*"
+streamlit = "*"
+watchdog = "*"
 
 [dev-packages]
 pytest = "*"
+black = "*"
+autoflake = "*"
+isort = "*"
+pydocstyle = "*"
+pre-commit = "*"
+docformatter = "*"
+autopep8 = "*"
+mypy = "*"
+make = "*"
 
 [requires]
 python_version = "3.13"

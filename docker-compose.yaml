@@ -1,12 +1,36 @@
+networks:
+  svg_network:
+    driver: bridge
+
 services:
+
   app:
     build:
       context: .
+      dockerfile: Dockerfile.backend
     env_file:
       - .env
     volumes:
-      - .:/app
+      - ./static/uploads:/app/static/uploads
     working_dir: /app
     ports:
-      - "8000:8000"
-    command: ["uvicorn", "src.interfaces.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+      - "${API_PORT}:${API_PORT}"
+    networks:
+      - svg_network
+    command: ["uvicorn", "src.interfaces.api.main:app", "--host", "${API_HOST}", "--port", "${API_PORT}"]
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    env_file:
+      - .env
+    volumes:
+      - ./static/uploads:/app/static/uploads
+    depends_on:
+      - app
+    networks:
+      - svg_network
+    ports:
+      - "${SL_PORT}:${SL_PORT}"
+    command: ["streamlit", "run", "./src/interfaces/api/frontend/app.py", "--server.port=${SL_PORT}", "--server.address=0.0.0.0"]

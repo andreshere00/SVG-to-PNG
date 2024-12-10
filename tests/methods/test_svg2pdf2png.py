@@ -1,5 +1,7 @@
 import unittest
+
 from src.methods.svg2pdf2png import PDFToPNGConverter
+
 
 class TestPDFToPNGConverter(unittest.TestCase):
 

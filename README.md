@@ -41,8 +41,8 @@ The following packages and programs should be installed before launching the app
 Clone the repository:
 
 ```bash
-git clone <repository_url>
-cd <repository_name>
+git clone https://github.com/andreshere00/SVG-to-PNG.git
+cd SVG-to-PNG
 ```
 
 Activate virtual environment:
@@ -98,7 +98,14 @@ sudo docker build -t svg-to-png .
 sudo docker run --env-file .env svg-to-png
 ```
 
-Default methods can be found on `http://localhost:8000/docs`. Note that port 8000 should be opened in order to access to the API through the browser.
+Or using compose:
+
+```bash
+sudo docker-compose build
+sudo docker-compose up
+```
+
+Default methods can be found on `http://localhost:8000/docs`. Note that port 8000 should be opened in order to access to the API through the browser. Refer to the [guide](docs/main.md) for more information about deploying the application.
 
 ## Configuration
 
@@ -118,12 +125,12 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 │   │   ├── cli/               # Command-line interface
 │   │   │   ├── __init__.py
 │   │   │   └── main.py        # CLI entrypoint
-│   │   ├── api/ 
+│   │   ├── api/
 │   │   │   ├── routes/            # API endpoints
 │   │   │   │   ├──__init__.py
 │   │   │   │   ├── upload.py      # Upload API
 │   │   │   │   ├── convert.py     # Convert API
-│   │   │   │   └── download.py    # Download API   
+│   │   │   │   └── download.py    # Download API
 │   │   │   ├── __init__.py
 │   │   │   └── main.py            # API entrypoint
 │   │   └── __init__.py
@@ -185,6 +192,21 @@ Edit the [`config.yaml`](./src/config/config.yaml) file to adjust application se
 4. Push to the branch: git push origin feature-name.
 5. Open a pull request.
 
+Please before commiting, ensure that `pre-commit` is installed, along with their hooks and all the features have the appropiate documentation and tests. Any feature without tests or documentation will not be approved to be merged, or in some cases, it will be deleted.
+
+### Installing hooks and pre-commit
+
+```bash
+pipenv install -d
+pipenv run pre-commit install
+pipenv run pre-commit autoupdate
+```
+
+Direct execution of the hooks can be carried out with the following command:
+
+```bash
+pipenv run pre-commit run --all-files
+```
 
 ## Next steps
 

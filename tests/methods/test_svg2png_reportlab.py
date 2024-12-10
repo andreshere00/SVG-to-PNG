@@ -1,5 +1,6 @@
-import unittest
 import os
+import unittest
+
 from src.methods.svg2png_reportlab import ReportLabSVGConverter
 
 
